@@ -78,10 +78,7 @@ describe('UserController', () => {
       await userController.validateUser(validateUserDto, mockResponse);
 
       expect(usersService.validateUser).toHaveBeenCalledWith(validateUserDto);
-      expect(mockResponse.header).toHaveBeenCalledWith(
-        'access-token',
-        mockToken,
-      );
+      expect(mockResponse.header).toHaveBeenCalledWith('auth-token', mockToken);
       expect(mockResponse.status).toHaveBeenCalledWith(HttpStatus.OK);
       expect(mockResponse.json).toHaveBeenCalledWith({ user: mockUserId });
     });
